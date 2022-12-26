@@ -23,6 +23,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import static com.example.final_project_app.helpers.FBshortcut.refClients;
 
 public class activity_input_clint extends AppCompatActivity {
@@ -40,8 +42,10 @@ public class activity_input_clint extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ValueEventListener ClientsListener;
 
-    String name, phone, email, password, password2, city;
+    String name, phone, email, password, password2, city, id;
     boolean mode = true;
+    boolean lock = true;
+    ArrayList<Client> client_list = new ArrayList<Client>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +124,7 @@ public class activity_input_clint extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if( task.isSuccessful()){
                                                 Client client1 = new Client(name, email, password, phone, city);
-                                                refClients.child(phone).setValue(client1);
+                                                refClients.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(client1);
 
                                             }
                                         }
@@ -137,17 +141,40 @@ public class activity_input_clint extends AppCompatActivity {
             }
         }else{
             if (validate_data()){
+                gi = getIntent();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(activity_input_clint.this, "welcome!", Toast.LENGTH_LONG).show();
+                            ClientsListener = new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot data : snapshot.getChildren()) {
+                                        String phone1 = (String) data.getKey();
+                                        Client c = data.getValue(Client.class);
+                                        if (c.getClient_email().equals(email)){
+                                            Log.i("user_id",phone1);
+                                            gi.putExtra("user_id",phone1);
+                                            setResult(RESULT_OK,gi);
+                                            finish();
+                                        }
+                                    }
+                                }
 
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            };
+
+                        }else{
+                            gi.putExtra("user_id","gh");
+                            setResult(RESULT_OK,gi);
+                            finish();
                         }
                     }
                 });
-                gi = getIntent();
-                gi.putExtra("user_id",email);
                 setResult(RESULT_OK,gi);
                 finish();
             }

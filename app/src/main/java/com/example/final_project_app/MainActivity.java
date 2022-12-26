@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     /**
      * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Intent si;
 
     String[] categories = {"קוסמטיקאיות","מורים פרטיים","ספרים"};
-    String emailId, user_id;
+    String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (emailId == null){
+                if (user_id == null){
                     si = new Intent(MainActivity.this, activity_input_clint.class);
                     startActivityForResult(si, 1);
                 }
@@ -70,8 +72,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(data != null){
-            emailId = data.getStringExtra("user_id");
-            Log.i("v",user_id);
+            user_id = data.getStringExtra("user_id");
+            Log.i("user_id", user_id);
+
         }
     }
 }
