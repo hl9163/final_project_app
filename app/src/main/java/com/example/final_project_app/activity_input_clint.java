@@ -118,21 +118,7 @@ public class activity_input_clint extends AppCompatActivity {
                             Toast.makeText(activity_input_clint.this, "user already exist", Toast.LENGTH_LONG).show();
                             return;
                         }else{
-                            mAuth.createUserWithEmailAndPassword(email,password)
-                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if( task.isSuccessful()){
-                                                Client client1 = new Client(name, email, password, phone, city);
-                                                refClients.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(client1);
-
-                                            }
-                                        }
-                                    });
-                            gi = getIntent();
-                            gi.putExtra("user_id",email);
-                            setResult(RESULT_OK,gi);
-                            finish();
+                            create_user();
                         }
                     }
                 });
@@ -141,40 +127,23 @@ public class activity_input_clint extends AppCompatActivity {
             }
         }else{
             if (validate_data()){
-                gi = getIntent();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(activity_input_clint.this, "welcome!", Toast.LENGTH_LONG).show();
-                            ClientsListener = new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot data : snapshot.getChildren()) {
-                                        String phone1 = (String) data.getKey();
-                                        Client c = data.getValue(Client.class);
-                                        if (c.getClient_email().equals(email)){
-                                            Log.i("user_id",phone1);
-                                            gi.putExtra("user_id",phone1);
-                                            setResult(RESULT_OK,gi);
-                                            finish();
-                                        }
-                                    }
-                                }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            };
 
                         }else{
-                            gi.putExtra("user_id","gh");
+                            gi = getIntent();
+                            gi.putExtra("user_id","error");
                             setResult(RESULT_OK,gi);
                             finish();
                         }
                     }
                 });
+                gi = getIntent();
+                gi.putExtra("user_id",FirebaseAuth.getInstance().getCurrentUser().getUid());
                 setResult(RESULT_OK,gi);
                 finish();
             }
@@ -200,4 +169,22 @@ public class activity_input_clint extends AppCompatActivity {
             return true;
         }
     }
+    /**
+     * create the user after all the validation
+     * <p>
+     */
+    public void create_user(){
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if( task.isSuccessful()){
+                            Client client1 = new Client(name, email, password, phone, city);
+                            refClients.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(client1);
+                        }
+                    }
+                });
+        finish();
+    }
+
 }
