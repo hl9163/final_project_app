@@ -17,13 +17,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.example.final_project_app.helpers.Client;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import static com.example.final_project_app.helpers.FBshortcut.refClients;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     /**
      * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
-     * @version	1.0
-     * @since		24/12/2022
+     * @version	1.5
+     * @since		02/12/2022
      * main screen
      */
 
@@ -31,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ImageButton account;
     Intent si;
     AlertDialog.Builder adb;
-
+    ValueEventListener bListener;
 
     String[] categories = {"קוסמטיקאיות","מורים פרטיים","ספרים"};
     String user_id, business_id;
@@ -105,9 +111,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id = item.getItemId();
         if (id == R.id.myBusiness) {
             if (user_id != null) {
-                if (business_id == null) {
+                bListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot data : snapshot.getChildren()){
+                            String id = (String) data.getKey();
+                            if (id.equals(user_id)){
+                                Client c = data.getValue(Client.class);
+                                if (c.getClient_business().equals("null")){
+                                    si = new Intent(MainActivity.this, activity_input_business.class);
+                                    si.putExtra("user_id",user_id);
+                                    startActivity(si);
+                                }
+                            }
+                        }
+                    }
 
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                };
+                refClients.addValueEventListener(bListener);
                 return true;
             }else{
                 popErrorMassage();

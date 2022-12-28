@@ -1,0 +1,71 @@
+package com.example.final_project_app.helpers;
+
+import java.util.ArrayList;
+
+public class Business {
+    private String business_name;
+    private String business_logoLink;
+    private String business_address;
+    private String business_city;
+    private String business_menage_account_link;
+    private ArrayList<Service> business_services;
+
+    public Business(String business_name, String business_logoLink, String business_address, String business_city, String business_menage_account_link, ArrayList<Service> business_services) {
+        this.business_name = business_name;
+        this.business_logoLink = business_logoLink;
+        this.business_address = business_address;
+        this.business_city = business_city;
+        this.business_menage_account_link = business_menage_account_link;
+        this.business_services = business_services;
+    }
+
+    public Business() {
+    }
+
+    public String getBusiness_name() {
+        return business_name;
+    }
+
+    public void setBusiness_name(String business_name) {
+        this.business_name = business_name;
+    }
+
+    public String getBusiness_logoLink() {
+        return business_logoLink;
+    }
+
+    public void setBusiness_logoLink(String business_logoLink) {
+        this.business_logoLink = business_logoLink;
+    }
+
+    public String getBusiness_address() {
+        return business_address;
+    }
+
+    public void setBusiness_address(String business_address) {
+        this.business_address = business_address;
+    }
+    public String getBusiness_city() {
+        return business_city;
+    }
+
+    public void setBusiness_city(String business_city) {
+        this.business_city = business_city;
+    }
+
+    public String getBusiness_menage_account_link() {
+        return business_menage_account_link;
+    }
+
+    public void setBusiness_menage_account_link(String business_menage_account_link) {
+        this.business_menage_account_link = business_menage_account_link;
+    }
+
+    public ArrayList<Service> getBusiness_services() {
+        return business_services;
+    }
+
+    public void setBusiness_services(ArrayList<Service> business_services) {
+        this.business_services = business_services;
+    }
+}

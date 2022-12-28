@@ -79,11 +79,13 @@ public class activity_input_clint extends AppCompatActivity {
     public void change_the_mode(View view) {
         mode = !mode;
         if (mode){
+            title.setText("התחברות");
             nameL.setVisibility(View.GONE);
             phoneL.setVisibility(View.GONE);
             password2L.setVisibility(View.GONE);
             change_mode.setText("לחץ פה כדי להירשם");
         }else{
+            title.setText("הירשם");
             nameL.setVisibility(View.VISIBLE);
             phoneL.setVisibility(View.VISIBLE);
             password2L.setVisibility(View.VISIBLE);
@@ -181,5 +183,11 @@ public class activity_input_clint extends AppCompatActivity {
                 });
         finish();
     }
-
+    /**
+     * back to the menu
+     * <p>
+     */
+    public void back_to_main_menu(View view) {
+        finish();
+    }
 }
