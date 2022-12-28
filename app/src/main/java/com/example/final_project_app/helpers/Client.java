@@ -6,14 +6,14 @@ public class Client {
     String client_email;
     String client_password;
     String client_phone;
-    String client_fav_city;
+    String client_business;
 
-    public Client(String name, String email, String password, String phone, String fav_city) {
+    public Client(String name, String email, String password, String phone, String clientbusiness) {
          client_name = name;
          client_email= email;
          client_password = password;
          client_phone = phone;
-         client_fav_city = fav_city;
+         client_business = clientbusiness;
     }
 
     public Client() {
@@ -51,11 +51,11 @@ public class Client {
         this.client_phone = client_phone;
     }
 
-    public String getClient_fav_city() {
-        return client_fav_city;
+    public String getClient_business() {
+        return client_business;
     }
 
-    public void setClient_fav_city(String client_fav_city) {
-        this.client_fav_city = client_fav_city;
+    public void setClient_business(String client_business) {
+        this.client_business = client_business;
     }
 }

@@ -1,11 +1,16 @@
 package com.example.final_project_app;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,9 +30,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ListView cList;
     ImageButton account;
     Intent si;
+    AlertDialog.Builder adb;
+
 
     String[] categories = {"קוסמטיקאיות","מורים פרטיים","ספרים"};
-    String user_id;
+    String user_id, business_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +83,58 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Log.i("user_id", user_id);
 
         }
+    }
+    /**
+     * create the menu.
+     * <p>
+     *
+     */
+    @Override
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+    /**
+     * move to business activity or register.
+     * <p>
+     *
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.myBusiness) {
+            if (user_id != null) {
+                if (business_id == null) {
+
+                }
+                return true;
+            }else{
+                popErrorMassage();
+                return true;
+            }
+
+        }
+        return true;
+    }
+    /**
+     * pop error alert dialog massage to the user
+     * <p>
+     *
+     */
+    public void popErrorMassage(){
+        adb = new AlertDialog.Builder(this);
+        adb.setCancelable(false);
+        adb.setTitle("שים לב!");
+        adb.setMessage("כדי להכנס לחלק זה עליך להתחבר");
+        adb.setNegativeButton("close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog ad = adb.create();
+        ad.show();
+
     }
 }

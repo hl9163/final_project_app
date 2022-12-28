@@ -35,16 +35,15 @@ public class activity_input_clint extends AppCompatActivity {
      * input client details
      */
     TextView title;
-    LinearLayout nameL, phoneL, password2L, cityL;
-    EditText nameE, phoneE, emailE, passwordE, password2E, cityE;
+    LinearLayout nameL, phoneL, password2L;
+    EditText nameE, phoneE, emailE, passwordE, password2E;
     Button change_mode;
     Intent gi;
     private FirebaseAuth mAuth;
     ValueEventListener ClientsListener;
 
-    String name, phone, email, password, password2, city, id;
+    String name, phone, email, password, password2;
     boolean mode = true;
-    boolean lock = true;
     ArrayList<Client> client_list = new ArrayList<Client>();
 
     @Override
@@ -56,7 +55,6 @@ public class activity_input_clint extends AppCompatActivity {
         nameL = (LinearLayout) findViewById(R.id.nameLL);
         phoneL = (LinearLayout) findViewById(R.id.phoneLL);
         password2L = (LinearLayout) findViewById(R.id.password2LL);
-        cityL = (LinearLayout) findViewById(R.id.cityLL);
         change_mode = (Button) findViewById(R.id.button2);
 
         nameE = (EditText) findViewById(R.id.name);
@@ -64,13 +62,10 @@ public class activity_input_clint extends AppCompatActivity {
         emailE = (EditText) findViewById(R.id.email);
         passwordE = (EditText) findViewById(R.id.password);
         password2E = (EditText) findViewById(R.id.password2);
-        cityE = (EditText) findViewById(R.id.city);
 
         nameL.setVisibility(View.GONE);
         phoneL.setVisibility(View.GONE);
         password2L.setVisibility(View.GONE);
-        cityL.setVisibility(View.GONE);
-
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -87,13 +82,11 @@ public class activity_input_clint extends AppCompatActivity {
             nameL.setVisibility(View.GONE);
             phoneL.setVisibility(View.GONE);
             password2L.setVisibility(View.GONE);
-            cityL.setVisibility(View.GONE);
             change_mode.setText("לחץ פה כדי להירשם");
         }else{
             nameL.setVisibility(View.VISIBLE);
             phoneL.setVisibility(View.VISIBLE);
             password2L.setVisibility(View.VISIBLE);
-            cityL.setVisibility(View.VISIBLE);
             change_mode.setText("לחץ פה כדי להתחבר");
         }
     }
@@ -109,19 +102,19 @@ public class activity_input_clint extends AppCompatActivity {
             name = nameE.getText().toString().trim();
             phone = phoneE.getText().toString().trim();
             password2 = password2E.getText().toString().trim();
-            city = cityE.getText().toString().trim();
             if(validate_data()){
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(activity_input_clint.this, "user already exist", Toast.LENGTH_LONG).show();
-                            return;
-                        }else{
-                            create_user();
-                        }
-                    }
-                });
+//                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()){
+//                            Toast.makeText(activity_input_clint.this, "user already exist", Toast.LENGTH_LONG).show();
+//                            return;
+//                        }else{
+//                            create_user();
+//                        }
+//                    }
+//                });
+                create_user();
             }else{
                 alertToast.show();
             }
@@ -134,7 +127,7 @@ public class activity_input_clint extends AppCompatActivity {
                             Toast.makeText(activity_input_clint.this, "welcome!", Toast.LENGTH_LONG).show();
 
 
-                        }else{
+                        }if (task.isCanceled()){
                             gi = getIntent();
                             gi.putExtra("user_id","error");
                             setResult(RESULT_OK,gi);
@@ -157,7 +150,7 @@ public class activity_input_clint extends AppCompatActivity {
         if (!mode){
 
             if (name.equals("") || email.equals("") || !Patterns.EMAIL_ADDRESS.matcher(email).matches() ||phone.equals("") ||
-                    city.equals("") || password.equals("")|| password2.equals("") || !password.equals(password2)){
+                     password.equals("")|| password2.equals("") || !password.equals(password2)){
                 return false;
             }
 
@@ -174,13 +167,15 @@ public class activity_input_clint extends AppCompatActivity {
      * <p>
      */
     public void create_user(){
+
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if( task.isSuccessful()){
-                            Client client1 = new Client(name, email, password, phone, city);
-                            refClients.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(client1);
+                            Client client1 = new Client(name, email, password, phone,"null");
+                            String id = (String) FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            refClients.child(id).setValue(client1);
                         }
                     }
                 });
