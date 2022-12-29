@@ -7,4 +7,5 @@ public class FBshortcut {
     public static FirebaseDatabase FBDB = FirebaseDatabase.getInstance();
 
     public static DatabaseReference refClients=FBDB.getReference("Clients");
+    public static  DatabaseReference refBusiness = FBDB.getReference("Business");
 }

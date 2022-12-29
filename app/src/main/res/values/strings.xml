@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">final_project_app</string>
+
+    <string-array name="cities">
+        <item>בחר את העיר שהעסק ממוקם</item>
+        <item>ירושליים</item>
+        <item>תל אביב</item>
+        <item>חיפה</item>
+        <item>ראשון לציון</item>
+        <item>פתח תקווה</item>
+        <item>אשדוד</item>
+        <item>נתניה</item>
+        <item>בני ברק</item>
+        <item>באר שבע</item>
+        <item>חולון</item>
+        <item>אשקלון</item>
+        <item>אילת</item>
+        <item>דימונה</item>
+    </string-array>
 </resources>

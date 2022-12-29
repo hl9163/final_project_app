@@ -152,7 +152,7 @@ public class activity_input_clint extends AppCompatActivity {
         if (!mode){
 
             if (name.equals("") || email.equals("") || !Patterns.EMAIL_ADDRESS.matcher(email).matches() ||phone.equals("") ||
-                     password.equals("")|| password2.equals("") || !password.equals(password2)){
+                    password.equals("")|| password2.equals("") || !password.equals(password2)){
                 return false;
             }
 
