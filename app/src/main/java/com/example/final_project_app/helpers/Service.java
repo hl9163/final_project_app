@@ -11,6 +11,7 @@ public class Service {
     public Service(String name, String cost, String time) {
         this.service_name = name;
         this.service_cost = cost;
+        this.service_time = time;
     }
 
     public String getService_name() {
