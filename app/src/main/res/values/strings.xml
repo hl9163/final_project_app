@@ -17,4 +17,12 @@
         <item>אילת</item>
         <item>דימונה</item>
     </string-array>
+
+    <string-array name = "subjects">
+        <item>בחר את סוג העסק</item>
+        <item>מספרה</item>
+        <item>קוסמטיקה</item>
+        <item>ייעוץ פיננסי</item>
+        <item>שיעורים פרטיים</item>
+    </string-array>
 </resources>

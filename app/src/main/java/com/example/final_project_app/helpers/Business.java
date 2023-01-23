@@ -7,16 +7,20 @@ public class Business {
     private String business_logoLink;
     private String business_address;
     private String business_city;
+    private String subject;
     private String business_menage_account_link;
+    private boolean is_open;
     private ArrayList<Service> business_services;
 
-    public Business(String business_name, String business_logoLink, String business_address, String business_city, String business_menage_account_link, ArrayList<Service> business_services) {
+    public Business(String business_name, String business_logoLink, String business_address, String business_city, String business_menage_account_link, ArrayList<Service> business_services, String subject, boolean is_open) {
         this.business_name = business_name;
         this.business_logoLink = business_logoLink;
         this.business_address = business_address;
         this.business_city = business_city;
         this.business_menage_account_link = business_menage_account_link;
         this.business_services = business_services;
+        this.subject = subject;
+        this.is_open = is_open;
     }
 
     public Business() {
@@ -67,5 +71,21 @@ public class Business {
 
     public void setBusiness_services(ArrayList<Service> business_services) {
         this.business_services = business_services;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public boolean isIs_open() {
+        return is_open;
+    }
+
+    public void setIs_open(boolean is_open) {
+        this.is_open = is_open;
     }
 }

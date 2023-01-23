@@ -12,10 +12,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -45,6 +43,12 @@ import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 import static com.example.final_project_app.helpers.FBshortcut.refClients;
 
 public class activity_input_business extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	2.0
+     * @since		26/12/2022
+     * input new business details
+     */
     Intent gi;
     TextView title;
     LinearLayout nameL, addressL, cityL, logoL, serviceL;
@@ -59,14 +63,14 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
-    String user_id, name, address,city;
+    String user_id, name, address,city, subject;
     String nameService, priceService, timeService;
     String[] arr;
     ArrayList<Service> business_services = new ArrayList<Service>();
     ArrayList<String> business_services_show = new ArrayList<String>();
 
     int p = 0;
-    boolean mode = true;
+    boolean firstPage = true;
     boolean haveLogo = false;
     boolean haveOneService = false;
     boolean imgUploaded = false;
@@ -111,19 +115,26 @@ public class activity_input_business extends AppCompatActivity implements Adapte
 
         Log.i("user_id",user_id);
     }
-
+    /**
+     * the next button  - if the user in the first page, move him to the next
+     * and if he in the second, save
+     * <p>
+     */
 
     public void next_or_save(View view) {
-        if (mode){
+        if (firstPage){
             name = nameE.getText().toString().trim();
             address = addressE.getText().toString().trim();
             if (validate_data()){
                 nameL.setVisibility(View.GONE);
                 addressL.setVisibility(View.GONE);
-                cityL.setVisibility(View.GONE);
                 logoL.setVisibility(View.GONE);
                 serviceL.setVisibility(View.VISIBLE);
-                mode = false;
+                ArrayAdapter<CharSequence> spinner_adapter2 = ArrayAdapter.createFromResource(this,
+                        R.array.subjects, android.R.layout.simple_spinner_item);
+                spinnerCity.setAdapter(spinner_adapter2);
+                spinnerCity.setOnItemSelectedListener(this);
+                firstPage = false;
             }
         }else{
             if (validate_data()){
@@ -131,14 +142,17 @@ public class activity_input_business extends AppCompatActivity implements Adapte
                 final String imgName = UUID.randomUUID().toString();
                 refClients.child(user_id).child("client_business").setValue(business_id);
                 uploadPic(imgName);
-                Business b = new Business(name, imgName, address, city, user_id, business_services);
+                Business b = new Business(name, imgName, address, city, user_id, business_services,subject,false);
                 refBusiness.child(business_id).setValue(b);
                 finish();
             }
 
         }
     }
-
+    /**
+     * upload the business logo to firebase storage
+     * <p>
+     */
     private void uploadPic(String imgName) {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("uploading Image...");
@@ -164,28 +178,46 @@ public class activity_input_business extends AppCompatActivity implements Adapte
         });
 
     }
-
+    /**
+     * list-view to show the cities (in the first page) or the subject (in the last page)
+     * <p>
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         p = position;
-        if (position>1){
-            city = String.valueOf(position);
+        if (firstPage){
+            if (position>1){
+                city =  getResources().getStringArray(R.array.cities)[p];
+            }else{
+                city = "";
+            }
         }else{
-            city = "";
+            if (position>1){
+                subject = getResources().getStringArray(R.array.subjects)[p];
+            }else{
+                subject = "";
+            }
         }
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
+    /**
+     * add logo image-button
+     * <p>
+     */
     public void addLogo(View view) {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent,1);
     }
-
+    /**
+     * when return from selecting image
+     * <p>
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,21 +227,27 @@ public class activity_input_business extends AppCompatActivity implements Adapte
             haveLogo = true;
         }
     }
-
+    /**
+     * validate data function
+     * <p>
+     */
         public boolean validate_data(){
-        if (mode){
-            if (name.equals("") || address.equals("") || p < 1 || !haveLogo){
+        if (firstPage){
+            if (name.equals("") || address.equals("") || city.equals("") || !haveLogo){
                 return false;
             }
         }else{
-            if (!haveOneService){
-                Toast.makeText(this, "הוסף שירות אחד לפחות!", Toast.LENGTH_SHORT).show();
+            if (!haveOneService || subject.equals("")){
+                Toast.makeText(this, "הוסף שירות", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
         return true;
     }
-
+    /**
+     * open alart dialog for adding service
+     * <p>
+     */
     public void addServiceB(View view) {
         adb = new AlertDialog.Builder(activity_input_business.this);
         View mView = getLayoutInflater().inflate(R.layout.dialog_service,null);
@@ -247,5 +285,19 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+    /**
+     * back button
+     * <p>
+     */
+    public void back_to_main_menu(View view) {
+        if (!firstPage){
+            ArrayAdapter<CharSequence> spinner_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.cities, android.R.layout.simple_spinner_item);
+            spinnerCity.setAdapter(spinner_adapter);
+            spinnerCity.setOnItemSelectedListener(this);
+        }else{
+            finish();
+        }
     }
 }
