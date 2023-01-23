@@ -18,7 +18,7 @@
         <item>דימונה</item>
     </string-array>
 
-    <string-array name = "subjects">
+    <string-array name="subjects">
         <item>בחר את סוג העסק</item>
         <item>מספרה</item>
         <item>קוסמטיקה</item>

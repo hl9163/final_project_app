@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        si = new Intent(MainActivity.this, activity_categories.class);
+        si.putExtra("cat_number",position);
+        startActivity(si);
 
     }
     /**

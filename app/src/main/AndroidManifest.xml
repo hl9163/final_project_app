@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_project_app">
-        <activity android:name=".activity_input_business"></activity>
+        <activity android:name=".custom_listBusiness"></activity>
+        <activity android:name=".activity_categories" />
+        <activity android:name=".activity_input_business" />
         <activity android:name=".Activity_input_clint_details" />
         <activity android:name=".activity_input_clint" />
         <activity android:name=".client_register" />
