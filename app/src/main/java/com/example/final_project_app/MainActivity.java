@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     AlertDialog.Builder adb;
     ValueEventListener bListener;
 
-    String[] categories = {"קוסמטיקאיות","מורים פרטיים","ספרים"};
     String user_id, business_id;
 
     @Override
@@ -62,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         cList.setOnItemClickListener(this);
         cList.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-        ArrayAdapter<String> adp = new ArrayAdapter<>(this,
-                R.layout.support_simple_spinner_dropdown_item, categories);
+        ArrayAdapter<CharSequence> adp =  ArrayAdapter.createFromResource(this,
+                R.array.subjects, android.R.layout.simple_spinner_item);
         cList.setAdapter(adp);
 
 
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             String id = (String) data.getKey();
                             if (id.equals(user_id)){
                                 Client c = data.getValue(Client.class);
-                                if (c.getClient_business().equals("null")){
+                                if (c.getClient_business() == null){
                                     si = new Intent(MainActivity.this, activity_input_business.class);
                                     si.putExtra("user_id",user_id);
                                     startActivity(si);
