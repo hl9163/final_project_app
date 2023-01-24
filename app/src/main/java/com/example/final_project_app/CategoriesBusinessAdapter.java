@@ -22,11 +22,13 @@ import java.io.IOException;
 public class CategoriesBusinessAdapter extends BaseAdapter {
     Context context;
     Business[] businessList;
+    String[] business_id;
     LayoutInflater inflter;
 
-    public CategoriesBusinessAdapter(Context applicationContext, Business[] businessList) {
+    public CategoriesBusinessAdapter(Context applicationContext, Business[] businessList, String [] business_id) {
         this.context = applicationContext;
         this.businessList = businessList;
+        this.business_id = business_id;
         inflter = (LayoutInflater.from(applicationContext));
     }
 
@@ -45,7 +47,8 @@ public class CategoriesBusinessAdapter extends BaseAdapter {
         return 0;
     }
 
-    public void return_businessId(int position){
+    public String return_businessId(int position){
+        return business_id[position];
 
     }
 

@@ -110,7 +110,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
                         businessList_adp[i] = businessList.get(i);
                         businessIdList_adp[i] = businessIdList.get(i);
                     }
-                    customadp = new CategoriesBusinessAdapter(getApplicationContext(), businessList_adp);
+                    customadp = new CategoriesBusinessAdapter(getApplicationContext(), businessList_adp,businessIdList_adp);
                     list.setAdapter(customadp);
 
                 }
