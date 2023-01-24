@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 import static com.example.final_project_app.helpers.FBshortcut.refClients;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -65,6 +66,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 R.array.subjects, android.R.layout.simple_spinner_item);
         cList.setAdapter(adp);
 
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (bListener!=null) {
+            refBusiness.removeEventListener(bListener);
+        }
 
     }
 
