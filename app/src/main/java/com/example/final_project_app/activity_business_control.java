@@ -16,6 +16,13 @@ import com.google.firebase.database.ValueEventListener;
 import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 
 public class activity_business_control extends AppCompatActivity {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		21/01/2023
+     * business control panel
+     */
+
     Intent gi;
     TextView title_control;
     ValueEventListener bListener;
