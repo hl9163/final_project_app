@@ -23,6 +23,13 @@ import java.util.ArrayList;
 import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 
 public class activity_categories extends AppCompatActivity implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		15/01/2023
+     * show business from specific chosen category
+     */
+
     TextView titleC;
     Spinner spinnerCity;
     ListView list;
@@ -57,22 +64,10 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
                 R.array.cities, android.R.layout.simple_spinner_item);
         spinnerCity.setAdapter(spinner_adapter);
         spinnerCity.setOnItemSelectedListener(this);
-        Service s = new Service("sdfdsf","sdfsdf","sdfdsfd");
-        ArrayList<Service> business_services = new ArrayList<Service>();
-        business_services.add(s);
-        Business b = new Business("a","dfgdfgdfg","addddd","city","dfgdfgdfg",business_services,"fgfdg",true);
 
-        Business [] l = {b};
         list = (ListView) findViewById(R.id.listElements);
         list.setOnItemClickListener(this);
         list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-
-
-
-
-
-
     }
     @Override
     protected void onPause() {
@@ -80,13 +75,21 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
         if (bListener!=null) {
             refBusiness.removeEventListener(bListener);
         }
-
     }
-
+    /**
+     * back button
+     * <p>
+     */
     public void back_to_menu_c(View view) {
         finish();
     }
 
+    /**
+     * city fitter spinner.
+     * after choosing a city the spinner create a new list view with the businesses from
+     * the chosen city
+     * <p>
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int positionCity, long id) {
         if (positionCity != 0){

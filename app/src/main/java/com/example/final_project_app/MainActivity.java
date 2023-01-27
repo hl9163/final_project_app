@@ -18,7 +18,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.final_project_app.helpers.Client;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -133,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 if (c.getClient_business() == null){
                                     si = new Intent(MainActivity.this, activity_input_business.class);
                                     si.putExtra("user_id",user_id);
+                                    startActivity(si);
+                                }else{
+                                    si = new Intent(MainActivity.this, activity_business_control.class);
+                                    si.putExtra("business_id",c.getClient_business());
                                     startActivity(si);
                                 }
                             }
