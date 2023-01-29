@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_project_app">
-        <activity android:name=".activity_business_control"></activity>
+        <activity android:name=".activity_business_settings"></activity>
+        <activity android:name=".activity_business_control" />
         <activity android:name=".custom_listBusiness" />
         <activity android:name=".activity_categories" />
         <activity android:name=".activity_input_business" />

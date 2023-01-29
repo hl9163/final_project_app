@@ -96,6 +96,7 @@
             android:layout_weight="1" />
 
         <Button
+            android:onClick="move_to_business_settings"
             android:id="@+id/button8"
             android:layout_width="match_parent"
             android:layout_height="0dp"

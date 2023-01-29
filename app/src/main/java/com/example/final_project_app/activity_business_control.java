@@ -23,7 +23,7 @@ public class activity_business_control extends AppCompatActivity {
      * business control panel
      */
 
-    Intent gi;
+    Intent gi, si;
     TextView title_control;
     ValueEventListener bListener;
 
@@ -75,5 +75,15 @@ public class activity_business_control extends AppCompatActivity {
      */
     public void back_to_main_bcc(View view) {
         finish();
+    }
+    /**
+     * back button
+     * <p>
+     */
+    public void move_to_business_settings(View view) {
+        si = new Intent(activity_business_control.this, activity_business_settings.class);
+        si.putExtra("business_id",businessId);
+        startActivity(si);
+
     }
 }
