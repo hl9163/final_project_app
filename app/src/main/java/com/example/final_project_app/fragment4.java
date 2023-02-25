@@ -91,6 +91,8 @@ public class fragment4 extends Fragment implements AdapterView.OnItemClickListen
                                     arr[i] = business_services_show.get(i);
                                 }
                                 refBusiness.child(business_id).child("business_services").setValue(business_services);
+                                serviceAdp = new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,arr);
+                                serviceList.setAdapter(serviceAdp);
                             }
                         }else{
                             if (!service_name.isEmpty() && !service_price.isEmpty() && !service_time.isEmpty()){
@@ -100,6 +102,8 @@ public class fragment4 extends Fragment implements AdapterView.OnItemClickListen
                                 business_services_show.set(pos,st);
                                 arr[pos] = business_services_show.get(pos);
                                 refBusiness.child(business_id).child("business_services").setValue(business_services);
+                                serviceAdp = new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,arr);
+                                serviceList.setAdapter(serviceAdp);
 
                             }else if (service_name.isEmpty() && service_price.isEmpty() && service_time.isEmpty()){
                                 business_services.remove(pos);
@@ -109,6 +113,8 @@ public class fragment4 extends Fragment implements AdapterView.OnItemClickListen
                                     arr[i] = business_services_show.get(i);
                                 }
                                 refBusiness.child(business_id).child("business_services").setValue(business_services);
+                                serviceAdp = new ArrayAdapter<String>(getActivity().getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,arr);
+                                serviceList.setAdapter(serviceAdp);
                             }
                             pos = -1;
                         }
