@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             String id = (String) data.getKey();
                             if (id.equals(user_id)){
                                 Client c = data.getValue(Client.class);
-                                if (c.getClient_business() == null){
+                                if (c.getClient_business().equals("null")){
                                     si = new Intent(MainActivity.this, activity_input_business.class);
                                     si.putExtra("user_id",user_id);
                                     startActivity(si);

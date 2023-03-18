@@ -25,6 +25,15 @@
         <item>ייעוץ פיננסי</item>
         <item>שיעורים פרטיים</item>
     </string-array>
+
+    <string-array name="freq">
+        <item>טור כל 10 דקות</item>
+        <item>טור כל 20 דקות</item>
+        <item>טור כל 30 דקות</item>
+        <item>טור כל 40 דקות</item>
+        <item>טור כל 50 דקות</item>
+        <item>טור כל 60 דקות</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

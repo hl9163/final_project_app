@@ -142,7 +142,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
                 final String imgName = UUID.randomUUID().toString();
                 refClients.child(user_id).child("client_business").setValue(business_id);
                 uploadPic(imgName);
-                Business b = new Business(name, imgName, address, city, user_id, business_services,subject,false);
+                Business b = new Business(name, imgName, address, city, user_id, business_services,subject,false,null);
                 refBusiness.child(business_id).setValue(b);
                 finish();
             }
@@ -186,13 +186,13 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         p = position;
         if (firstPage){
-            if (position>1){
+            if (position>0){
                 city =  getResources().getStringArray(R.array.cities)[p];
             }else{
                 city = "";
             }
         }else{
-            if (position>1){
+            if (position>0){
                 subject = getResources().getStringArray(R.array.subjects)[p];
             }else{
                 subject = "";
