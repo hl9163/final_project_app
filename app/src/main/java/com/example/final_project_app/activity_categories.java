@@ -34,6 +34,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
     Spinner spinnerCity;
     ListView list;
     Intent gi;
+    Intent si;
     CategoriesBusinessAdapter customadp;
     ValueEventListener bListener;
 
@@ -135,6 +136,9 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        si = new Intent(this,activity_business_info.class);
+        si.putExtra("businessId", customadp.business_id[position]);
+        startActivity(si);
 
     }
 }

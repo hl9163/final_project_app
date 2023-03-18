@@ -35,7 +35,6 @@ public class activity_business_settings extends AppCompatActivity {
         vpAdapter.addFragment(new fragment1(),"הגדרות כלליות");
         vpAdapter.addFragment(new fragment2(),"הגדרות שעות");
         vpAdapter.addFragment(new fragment4(),"הגדרות שירותים");
-        vpAdapter.addFragment(new fragment3(),"הגדרות תורים");
         send_data_to_fragment(vpAdapter, 0);
         send_data_to_fragment(vpAdapter, 1);
         send_data_to_fragment(vpAdapter, 2);
