@@ -2,6 +2,7 @@ package com.example.final_project_app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,7 +15,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.final_project_app.helpers.Business;
 import com.example.final_project_app.helpers.WorkWeek;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +32,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
     ArrayAdapter<String> adp;
     EditText openTime_et,closeTime_et;
     Button sun, mon, tue, wed, tru, fri, sat, saveData;
+    ValueEventListener bListener;
 
     ArrayList<Boolean> days_of_work =  new ArrayList<Boolean>(Arrays.asList(false, false, false, false, false, false, false));
     ArrayList<String> timeWindows = new ArrayList<String>();
@@ -59,7 +65,50 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
         show_time.setOnItemClickListener(this);
         show_time.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
+        bListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data: snapshot.getChildren()){
+                    String id = (String) data.getKey();
+                    if (business_id.equals(id)){
+                        Business businessTemp = data.getValue(Business.class);
+                        WorkWeek s = businessTemp.getWork_schedule();
+                        ArrayList<Boolean> days_of_work_list = s.getDays_of_work();
+                        openTime_et.setText(s.getRegular_day().get(0));
+                        closeTime_et.setText(s.getFriday_queues().get(s.getRegular_day().size()-1));
+                        frequency_spinner.setSelection(s.getFrequency_index());
+                        if (days_of_work_list.get(0)){
+                            sun.setText("יום א - פתוח");
+                        }
+                        if (days_of_work_list.get(1)){
+                            mon.setText("יום ב - פתוח");
+                        }
+                        if (days_of_work_list.get(2)){
+                            tue.setText("יום ג - פתוח");
+                        }
+                        if (days_of_work_list.get(3)){
+                            wed.setText("יום ד - פתוח");
+                        }
+                        if (days_of_work_list.get(4)){
+                            tru.setText("יום ה - פתוח");
+                        }
+                        if (days_of_work_list.get(5)){
+                            fri.setText("יום ו - פתוח");
+                        }
+                        if (days_of_work_list.get(6)){
+                            sat.setText("יום ש - פתוח");
+                        }
+                        refBusiness.removeEventListener(bListener);
+                    }
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        refBusiness.addValueEventListener(bListener);
         sun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +121,6 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     }else{
                         sun.setText("יום א - סגור");
                     }
-
                 }
             }
         });

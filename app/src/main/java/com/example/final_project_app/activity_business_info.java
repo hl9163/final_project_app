@@ -16,8 +16,6 @@ public class activity_business_info extends AppCompatActivity {
 
          gi = getIntent();
          business_id = gi.getStringExtra("businessId");
-        TextView tv = (TextView) findViewById(R.id.textView13);
-        tv.setText(business_id);
 
 
     }
