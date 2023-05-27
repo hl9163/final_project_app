@@ -77,7 +77,7 @@ public class activity_business_control extends AppCompatActivity {
         finish();
     }
     /**
-     * back button
+     * move to business settings activity
      * <p>
      */
     public void move_to_business_settings(View view) {
@@ -85,5 +85,21 @@ public class activity_business_control extends AppCompatActivity {
         si.putExtra("business_id",businessId);
         startActivity(si);
 
+    }
+    /**
+     * move to opening time editor activity
+     * <p>
+     */
+    public void move_to_opening_time_activity(View view) {
+        si = new Intent(activity_business_control.this, activity_opening_time_editor.class);
+        si.putExtra("business_id",businessId);
+        startActivity(si);
+    }
+
+    public void go_to_my_queues_b(View view) {
+        si = new Intent(activity_business_control.this, activity_show_queues.class);
+        si.putExtra("mode",1);
+        si.putExtra("Id",businessId);
+        startActivity(si);
     }
 }

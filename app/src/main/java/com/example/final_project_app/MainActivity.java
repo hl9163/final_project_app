@@ -83,10 +83,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        si = new Intent(MainActivity.this, activity_categories.class);
-        si.putExtra("cat_number",position);
-        startActivity(si);
-
+        if (position != 0){
+            si = new Intent(MainActivity.this, activity_categories.class);
+            si.putExtra("cat_number",position);
+            si.putExtra("user_id",user_id);
+            startActivity(si);
+        }
     }
     /**
      * get the data from another activates
@@ -175,6 +177,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
         AlertDialog ad = adb.create();
         ad.show();
+
+    }
+
+    public void go_to_my_queues_c(View view) {
+        if (user_id != null){
+            si = new Intent(MainActivity.this, activity_show_queues.class);
+            si.putExtra("mode",0);
+            si.putExtra("Id",user_id);
+            startActivity(si);
+        }
 
     }
 }

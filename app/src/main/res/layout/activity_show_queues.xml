@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity_show_queues">
 
     <Space
         android:layout_width="0dp"
@@ -22,47 +22,20 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView16"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                tools:srcCompat="@drawable/ic_launcher_background" />
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:srcCompat="@drawable/ic_launcher_background" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/my_queues_c_button"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:onClick="go_to_my_queues_c"
-            android:text="לתורים שלי" />
+            android:gravity="center"
+            android:text="תורים שנקבעו"
+            android:textSize="24sp" />
 
         <ListView
-            android:id="@+id/cList"
+            android:id="@+id/queues_list_c_b"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3">
-
-        </ListView>
+            android:layout_weight="9" />
 
         <Space
             android:layout_width="match_parent"

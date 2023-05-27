@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final_project_app">
-        <activity android:name=".activity_business_info"></activity>
+        <activity android:name=".activity_show_queues"></activity>
+        <activity android:name=".activity_new_queue" />
+        <activity android:name=".activity_opening_time_editor" />
+        <activity android:name=".activity_business_info" />
         <activity android:name=".activity_business_settings" />
         <activity android:name=".activity_business_control" />
         <activity android:name=".custom_listBusiness" />

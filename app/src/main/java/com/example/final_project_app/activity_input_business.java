@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.final_project_app.helpers.Business;
+import com.example.final_project_app.helpers.Queue;
 import com.example.final_project_app.helpers.Service;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -68,6 +69,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     String[] arr;
     ArrayList<Service> business_services = new ArrayList<Service>();
     ArrayList<String> business_services_show = new ArrayList<String>();
+    ArrayList<Queue> business_queues = new ArrayList<Queue>();
 
     int p = 0;
     boolean firstPage = true;
@@ -142,7 +144,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
                 final String imgName = UUID.randomUUID().toString();
                 refClients.child(user_id).child("client_business").setValue(business_id);
                 uploadPic(imgName);
-                Business b = new Business(name, imgName, address, city, user_id, business_services,subject,false,null);
+                Business b = new Business(name, imgName, address, city, user_id, business_services,subject,false,null,business_queues);
                 refBusiness.child(business_id).setValue(b);
                 finish();
             }

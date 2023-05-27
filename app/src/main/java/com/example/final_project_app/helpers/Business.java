@@ -12,11 +12,12 @@ public class Business {
     private boolean is_open;
     private ArrayList<Service> business_services;
     private WorkWeek work_schedule;
+    private ArrayList<Queue> business_queues;
 
     public Business(String business_name, String business_logoLink, String business_address,
                     String business_city, String business_menage_account_link,
                     ArrayList<Service> business_services, String subject, boolean is_open,
-                    WorkWeek work_schedule) {
+                    WorkWeek work_schedule, ArrayList<Queue> business_queues) {
         this.business_name = business_name;
         this.business_logoLink = business_logoLink;
         this.business_address = business_address;
@@ -26,6 +27,7 @@ public class Business {
         this.subject = subject;
         this.is_open = is_open;
         this.work_schedule = work_schedule;
+        this.business_queues = business_queues;
     }
 
     public Business() {
@@ -100,5 +102,13 @@ public class Business {
 
     public void setWork_schedule(WorkWeek work_schedule) {
         this.work_schedule = work_schedule;
+    }
+
+    public ArrayList<Queue> getBusiness_queues() {
+        return business_queues;
+    }
+
+    public void setBusiness_queues(ArrayList<Queue> business_queues) {
+        this.business_queues = business_queues;
     }
 }

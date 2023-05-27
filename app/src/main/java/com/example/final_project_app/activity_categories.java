@@ -43,6 +43,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
     int posCategory;
     String subject;
     String city;
+    String user_id;
 
 
     @Override
@@ -54,6 +55,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
 
         gi = getIntent();
         posCategory = gi.getIntExtra("cat_number",-1);
+        user_id = gi.getStringExtra("user_id");
         if (posCategory == -1){
             finish();
         }
@@ -138,6 +140,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         si = new Intent(this,activity_business_info.class);
         si.putExtra("businessId", customadp.business_id[position]);
+        si.putExtra("user_id", user_id);
         startActivity(si);
 
     }

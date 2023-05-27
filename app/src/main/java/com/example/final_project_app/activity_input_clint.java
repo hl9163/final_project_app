@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.final_project_app.helpers.Client;
+import com.example.final_project_app.helpers.Queue;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -45,6 +46,7 @@ public class activity_input_clint extends AppCompatActivity {
     String name, phone, email, password, password2;
     boolean mode = true;
     ArrayList<Client> client_list = new ArrayList<Client>();
+    ArrayList<Queue> client_queues = new ArrayList<Queue>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +177,7 @@ public class activity_input_clint extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if( task.isSuccessful()){
-                            Client client1 = new Client(name, email, password, phone,"null");
+                            Client client1 = new Client(name, email, password, phone,"null",client_queues);
                             String id = (String) FirebaseAuth.getInstance().getCurrentUser().getUid();
                             refClients.child(id).setValue(client1);
                         }

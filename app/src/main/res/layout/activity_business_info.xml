@@ -34,7 +34,7 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/logoVeiw"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -47,20 +47,21 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/nameTV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/AddressTV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text="TextView" />
 
         <ListView
+            android:id="@+id/show_service"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
@@ -70,7 +71,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:text="Button" />
+            android:text="לקביעת תור לחצו פה"
+            android:onClick="make_new_q"/>
 
         <Space
             android:layout_width="match_parent"
