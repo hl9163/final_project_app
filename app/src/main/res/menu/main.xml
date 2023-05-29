@@ -3,8 +3,6 @@
     <item
         android:id="@+id/myBusiness"
         android:title="העסק שלי" />
-    <item
-        android:id="@+id/credits"
-        android:title="credits" />
+
 
 </menu>

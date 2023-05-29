@@ -91,7 +91,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 0;
-                        setSpinner(index_date_pos);
+                        setSpinner(0);
                         Log.i("ok","dfdsf");
                     }
                 });
@@ -99,7 +99,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 1;
-                        setSpinner(index_date_pos);
+                        setSpinner(1);
 
                     }
                 });
@@ -107,7 +107,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 2;
-                        setSpinner(index_date_pos);
+                        setSpinner(2);
 
                     }
                 });
@@ -115,7 +115,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 3;
-                        setSpinner(index_date_pos);
+                        setSpinner(3);
 
                     }
                 });
@@ -123,7 +123,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 4;
-                        setSpinner(index_date_pos);
+                        setSpinner(4);
 
                     }
                 });
@@ -131,7 +131,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 5;
-                        setSpinner(index_date_pos);
+                        setSpinner(5);
 
                     }
                 });
@@ -139,7 +139,7 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     @Override
                     public void onClick(View v) {
                         index_date_pos = 6;
-                        setSpinner(index_date_pos);
+                        setSpinner(6);
 
                     }
                 });
@@ -148,16 +148,19 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                     public void onClick(View v) {
 
                         if (validate_data(time_pos,index_date_pos,service_pos,week,business_services)){
-                            ArrayList<String> work_hours = return_day_list(week,index_date_pos);
-                            Log.i("ok",String.valueOf(time_pos));
+                            ArrayList<String> work_hours = return_day_list(week,index_date_pos-1);
+                            Log.i("ok",String.valueOf(index_date_pos));
                             int q_m;
                             if(get_x_days_from_today(index_date_pos) <7){
-                                q_m =new Date().getMonth();
+                                q_m =new Date().getMonth()+2;
                             }else{
                                 q_m =new Date().getMonth()+1;
                             }
                             Log.i("ok",user_id+" "+business_id+" "+String.valueOf(get_x_days_from_today(index_date_pos))+"/"+String.valueOf(q_m)+" "+ work_hours.get(time_pos)+" "+business_services.get(service_pos));
                             Queue new_q = new Queue(user_id,business_id,String.valueOf(get_x_days_from_today(index_date_pos))+"/"+String.valueOf(q_m), work_hours.get(time_pos),business_services.get(service_pos));
+                            if (queues_list_b == null){
+                                queues_list_b = new ArrayList<Queue>();
+                            }
                             queues_list_b.add(new_q);
                             refBusiness.child(business_id).child("business_queues").setValue(queues_list_b);
                             save_new_s(work_hours,index_date_pos,time_pos);
@@ -200,6 +203,11 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
     public void setSpinner(int index_date){
 //        time_pos = -1;
         day_name = get_day_name_in_x_days_from_today(index_date);
+        String [] arr = new String [1];
+        arr[0] = "";
+        ArrayAdapter<String> clean_adp = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item,arr);
+        time_frames.setAdapter(clean_adp);
         Log.i("ok",day_name);
         if (day_name.equals("יום ראשון") || day_name.equals("Sunday")){
             if (week.getDays_of_work().get(0)){
@@ -291,8 +299,9 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
     }
 
     public boolean validate_data (int time_pos, int index_date_pos, int service_pos, WorkWeek week, ArrayList<Service> business_services){
+        Log.i("ok",String.valueOf(service_pos));
         if (time_pos != -1 && service_pos != -1 && index_date_pos != -1){
-            String time_service_selected = business_services.get(time_pos).getService_time();
+            String time_service_selected = business_services.get(service_pos).getService_time();
             int time = Integer.parseInt(time_service_selected);
             Log.i("ok",String.valueOf(time));
             int one_q_time = (week.getFrequency_index()+1)*10;
@@ -357,6 +366,9 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
                         queues_list_c = clientTemp.getClient_queues();
                     }
                 }
+                if (queues_list_c == null){
+                    queues_list_c = new ArrayList<Queue>();
+                }
                 queues_list_c.add(queue);
                 refClients.child(user_id).child("client_queues").setValue(queues_list_c);
                 finish();
@@ -374,11 +386,14 @@ public class activity_new_queue extends AppCompatActivity implements AdapterView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         service_pos = position;
+        Log.i("ok",String.valueOf(index_date_pos));
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         time_pos = position;
+
 
     }
 

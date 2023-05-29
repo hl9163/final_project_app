@@ -193,6 +193,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
         openTime = openTime_et.getText().toString().trim();
         closeTime = closeTime_et.getText().toString().trim();
         if (is_good()){
+            timeWindows.clear();
             get_timeFrames(openTime,closeTime,position);
             String [] arr = new String[timeWindows.size()];
             for (int x = 0; x< timeWindows.size();x++){
