@@ -14,8 +14,8 @@ public class ReminderBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "my notification");
-        builder.setContentTitle("notification from Fronta");
-        builder.setContentText("thank u for using Fronta");
+        builder.setContentTitle("Fronta");
+        builder.setContentText("check your Fronta!");
         builder.setSmallIcon(R.drawable.ic_baseline_check_box_outline_blank_24);
         builder.setAutoCancel(true);
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
