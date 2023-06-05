@@ -6,13 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,15 +18,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.final_project_app.helpers.Client;
-import com.example.final_project_app.helpers.ReminderBroadcast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Calendar;
 
 import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 import static com.example.final_project_app.helpers.FBshortcut.refClients;
@@ -76,8 +68,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayAdapter<CharSequence> adp =  ArrayAdapter.createFromResource(this,
                 R.array.subjects, android.R.layout.simple_spinner_item);
         cList.setAdapter(adp);
-        createNotificationChannel();
-        setAlarm();
 
 
     }
@@ -117,35 +107,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
     }
-    public void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("my notification", "my name", NotificationManager.IMPORTANCE_HIGH);
-            NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-
-        }
-    }
-
-
-    public void setAlarm() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
-        pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-    }
-
-
-
-
-
-
-
-
 
 
     /**
