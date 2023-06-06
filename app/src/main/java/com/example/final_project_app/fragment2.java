@@ -22,6 +22,12 @@ import java.util.Arrays;
 import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 
 public class fragment2 extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener{
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	2.0
+     * @since		28/01/2023
+     * set opening hours fragment
+     */
     ListView show_time;
     Spinner frequency_spinner;
     ArrayAdapter<String> adp;
@@ -70,7 +76,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     if (days_of_work.get(0)){
                         sun.setText("יום א - פתוח");
                     }else{
-                        sun.setText("יום א - סגור");
+                        sun.setText("יום א - reset");
                     }
 
                 }
@@ -86,7 +92,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     if (days_of_work.get(1)){
                         mon.setText("יום ב - פתוח");
                     }else{
-                        mon.setText("יום ב - סגור");
+                        mon.setText("יום ב - reset");
                     }
 
                 }
@@ -102,7 +108,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     if (days_of_work.get(2)){
                         tue.setText("יום ג - פתוח");
                     }else{
-                        tue.setText("יום ג - סגור");
+                        tue.setText("יום ג - reset");
                     }
 
                 }
@@ -118,7 +124,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     if (days_of_work.get(3)){
                         wed.setText("יום ד - פתוח");
                     }else{
-                        wed.setText("יום ד - סגור");
+                        wed.setText("יום ד - reset");
                     }
 
                 }
@@ -134,7 +140,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     if (days_of_work.get(4)){
                         tru.setText("יום ה - פתוח");
                     }else{
-                        tru.setText("יום ה - סגור");
+                        tru.setText("יום ה - reset");
                     }
 
                 }
@@ -150,7 +156,7 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     if (days_of_work.get(5)){
                         fri.setText("יום ו - פתוח");
                     }else{
-                        fri.setText("יום ו - סגור");
+                        fri.setText("יום ו - reset");
                     }
 
                 }
@@ -165,8 +171,9 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
                     days_of_work.set(6,!days_of_work.get(6));
                     if (days_of_work.get(6)){
                         sat.setText("יום ש - פתוח");
+
                     }else{
-                        sat.setText("יום ש - סגור");
+                        sat.setText("יום ש - reset");
                     }
 
                 }
@@ -187,7 +194,10 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
 
         return v;
     }
-
+    /**
+     * show the days schedule by selected parameters
+     * <p>
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         openTime = openTime_et.getText().toString().trim();
@@ -216,7 +226,13 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
-
+    /**
+     * get the schedule hours by selected frequency
+     * @param start start hour
+     * @param end end hour
+     * @param freq_index pos in frequency spinner
+     * <p>
+     */
     public  void get_timeFrames(String start, String end, int freq_index){
         boolean is_start = true;
         int jumps = 0;
@@ -238,6 +254,10 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
             }
         }
     }
+    /**
+     * validate data
+     * <p>
+     */
     public boolean is_good(){
         if (!openTime.isEmpty() || !closeTime.isEmpty()){
             if (Integer.parseInt(openTime)<24 && Integer.parseInt(closeTime)<24) {
@@ -248,6 +268,10 @@ public class fragment2 extends Fragment implements AdapterView.OnItemSelectedLis
         }
         return false;
     }
+    /**
+     * save the info in firebase
+     * <p>
+     */
     public void save_info(){
         WorkWeek w = new WorkWeek(days_of_work,timeWindows,pos);
         refBusiness.child(business_id).child("work_schedule").setValue(w);
