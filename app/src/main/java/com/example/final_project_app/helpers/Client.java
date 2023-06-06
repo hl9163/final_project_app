@@ -3,6 +3,12 @@ package com.example.final_project_app.helpers;
 import java.util.ArrayList;
 
 public class Client {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	2.0
+     * @since		24/12/2022
+     * Client object
+     */
 
     private String client_name;
     private String client_email;

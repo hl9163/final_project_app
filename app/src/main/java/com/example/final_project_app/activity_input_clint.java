@@ -76,6 +76,7 @@ public class activity_input_clint extends AppCompatActivity {
      * change the mode
      * mode = true - log in
      * mode = false - register
+     * @param view button
      * <p>
      */
     public void change_the_mode(View view) {
@@ -96,6 +97,7 @@ public class activity_input_clint extends AppCompatActivity {
     }
     /**
      * save the data and move it the the main activity
+     * @param view button
      * <p>
      */
     public void save(View view) {
@@ -187,6 +189,7 @@ public class activity_input_clint extends AppCompatActivity {
     }
     /**
      * back to the menu
+     * @param view button
      * <p>
      */
     public void back_to_main_menu(View view) {

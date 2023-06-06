@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Intent si;
     AlertDialog.Builder adb;
     ValueEventListener bListener;
-    AlarmManager alarmManager;
-    PendingIntent pendingIntent;
 
     String user_id, business_id;
 
@@ -185,7 +183,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ad.show();
 
     }
-
+    /**
+     * move to show queues screen (mode 0 - client)
+     * @param view button
+     * <p>
+     *
+     */
     public void go_to_my_queues_c(View view) {
         if (user_id != null){
             si = new Intent(MainActivity.this, activity_show_queues.class);

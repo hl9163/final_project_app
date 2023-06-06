@@ -3,6 +3,12 @@ package com.example.final_project_app.helpers;
 import java.util.ArrayList;
 
 public class WorkWeek{
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		18/03/2023
+     * WorkWeek object
+     */
     private ArrayList<Boolean> days_of_work;
     private ArrayList<String> regular_day;
     private ArrayList<String> sunday_queues;

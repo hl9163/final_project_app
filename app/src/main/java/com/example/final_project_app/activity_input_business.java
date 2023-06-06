@@ -120,6 +120,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     /**
      * the next button  - if the user in the first page, move him to the next
      * and if he in the second, save
+     * @param view button
      * <p>
      */
 
@@ -153,6 +154,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     }
     /**
      * upload the business logo to firebase storage
+     * @param  imgName String name of the image in the firebase
      * <p>
      */
     private void uploadPic(String imgName) {
@@ -209,6 +211,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     }
     /**
      * add logo image-button
+     * @param view button
      * <p>
      */
     public void addLogo(View view) {
@@ -290,6 +293,7 @@ public class activity_input_business extends AppCompatActivity implements Adapte
     }
     /**
      * back button
+     * @param view button
      * <p>
      */
     public void back_to_main_menu(View view) {

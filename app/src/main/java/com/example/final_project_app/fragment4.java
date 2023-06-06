@@ -26,6 +26,12 @@ import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 
 
 public class fragment4 extends Fragment implements AdapterView.OnItemClickListener {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	2.0
+     * @since		20/02/2023
+     * remove, add and edit services screen
+     */
     Button add_service;
     EditText service_nameET, service_priceET, service_timeET;
     ListView serviceList;

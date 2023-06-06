@@ -71,13 +71,15 @@ public class activity_business_control extends AppCompatActivity {
     }
     /**
      * back button
+     * @param view button
      * <p>
      */
     public void back_to_main_bcc(View view) {
         finish();
     }
     /**
-     * move to business settings activity
+     * move to business settings activity. It transfer the business id.
+     * @param view button
      * <p>
      */
     public void move_to_business_settings(View view) {
@@ -86,7 +88,11 @@ public class activity_business_control extends AppCompatActivity {
         startActivity(si);
 
     }
-
+    /**
+     * move to my Queues screen. It transfer the business id and mode. (mode 1 - business view)
+     * @param view button
+     * <p>
+     */
     public void go_to_my_queues_b(View view) {
         si = new Intent(activity_business_control.this, activity_show_queues.class);
         si.putExtra("mode",1);

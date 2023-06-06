@@ -1,6 +1,11 @@
 package com.example.final_project_app.helpers;
 
 public class Queue {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * Queue object
+     */
     private String userId;
     private String businessId;
     private String date;

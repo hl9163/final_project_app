@@ -21,6 +21,12 @@ import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 import static com.example.final_project_app.helpers.FBshortcut.refClients;
 
 public class activity_show_queues extends AppCompatActivity {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		27/05/2023
+     * show all the saved queues (mode 0 - clients, mode 1- business)
+     */
     ListView queues_list;
     Intent gi;
     ValueEventListener cListener, bListener;
@@ -60,6 +66,10 @@ public class activity_show_queues extends AppCompatActivity {
         }
 
     }
+    /**
+     * load the clients queues and display them
+     * <p>
+     */
     public void show_client_queues(){
         cListener = new ValueEventListener() {
             @Override
@@ -83,6 +93,10 @@ public class activity_show_queues extends AppCompatActivity {
         };
         refClients.addValueEventListener(cListener);
     }
+    /**
+     * load the business queues and display them
+     * <p>
+     */
     public void show_business_queues(){
         bListener = new ValueEventListener() {
             @Override
@@ -114,7 +128,10 @@ public class activity_show_queues extends AppCompatActivity {
         }
         return arr;
     }
-
+    /**
+     * display all in the listView
+     * <p>
+     */
     public void display_queues(){
         for (int i=0;i<queues_list_data.size();i++){
             Queue ob = queues_list_data.get(i);

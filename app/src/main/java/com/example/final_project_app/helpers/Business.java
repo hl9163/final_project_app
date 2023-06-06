@@ -3,6 +3,12 @@ package com.example.final_project_app.helpers;
 import java.util.ArrayList;
 
 public class Business {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	2.0
+     * @since		26/12/2022
+     * Business object
+     */
     private String business_name;
     private String business_logoLink;
     private String business_address;

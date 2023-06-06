@@ -14,6 +14,13 @@ import com.example.final_project_app.helpers.VPAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class activity_business_settings extends AppCompatActivity {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		27/01/2023
+     * business info screen
+     */
+
     TabLayout tabLayout;
     ViewPager viewPager;
     Intent gi;
@@ -44,6 +51,10 @@ public class activity_business_settings extends AppCompatActivity {
 
 
     }
+    /**
+     * send the business id to all the fragments
+     * <p>
+     */
     public void send_data_to_fragment(VPAdapter vpAdapter, int pos){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

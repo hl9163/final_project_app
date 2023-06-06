@@ -34,6 +34,12 @@ import java.util.ArrayList;
 import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 
 public class activity_business_info extends AppCompatActivity {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		19/03/2023
+     * business info screen
+     */
     TextView nameF, addressF;
     ListView service_listF;
     ImageView logoF;
@@ -90,6 +96,10 @@ public class activity_business_info extends AppCompatActivity {
         refBusiness.addValueEventListener(bListener);
 
     }
+    /**
+     * show the business services in a listView
+     * <p>
+     */
     public void show_info(){
         nameF.setText(name);
         String add = address+ "," + city;
@@ -105,6 +115,11 @@ public class activity_business_info extends AppCompatActivity {
         service_listF.setAdapter(serviceAdp);
 
     }
+    /**
+     * display the business logo from firebase
+     * @param link firebase String image link
+     * <p>
+     */
     public void display_logo(String link){
         FirebaseStorage storage;
         StorageReference storageReference;
@@ -125,7 +140,12 @@ public class activity_business_info extends AppCompatActivity {
         }
 
     }
-
+    /**
+     * new queue button. It check if the user is connected.
+     * if he\she connected to the app it will move to the queue screen else alert dialog will popup
+     * @param view button
+     * <p>
+     */
     public void make_new_q(View view) {
         if (user_id != null){
             si = new Intent(this,activity_new_queue.class);

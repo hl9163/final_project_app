@@ -81,6 +81,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
     }
     /**
      * back button
+     * @param view button
      * <p>
      */
     public void back_to_menu_c(View view) {
@@ -91,6 +92,7 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
      * city fitter spinner.
      * after choosing a city the spinner create a new list view with the businesses from
      * the chosen city
+     * @param positionCity index of a city
      * <p>
      */
     @Override
@@ -135,7 +137,10 @@ public class activity_categories extends AppCompatActivity implements AdapterVie
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
+    /**
+     * move to selected business page (business info screen)
+     * <p>
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         si = new Intent(this,activity_business_info.class);

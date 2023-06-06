@@ -20,6 +20,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class CategoriesBusinessAdapter extends BaseAdapter {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		24/01/2023
+     * listView adapter
+     */
     Context context;
     Business[] businessList;
     String[] business_id;

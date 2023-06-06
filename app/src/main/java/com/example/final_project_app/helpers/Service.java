@@ -1,6 +1,12 @@
 package com.example.final_project_app.helpers;
 
 public class Service {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		26/12/2022
+     * Service object
+     */
     private String service_name;
     private String service_cost;
     private String service_time;

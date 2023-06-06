@@ -50,6 +50,12 @@ import static com.example.final_project_app.helpers.FBshortcut.refBusiness;
 import static com.example.final_project_app.helpers.FBshortcut.refClients;
 
 public class fragment1 extends Fragment implements AdapterView.OnItemClickListener {
+    /**
+     * @author		Harel Leibovich <hl9163@bs.amalnet.k12.il>
+     * @version	1.0
+     * @since		28/01/2023
+     * edit details of the business fragment
+     */
     EditText name_editT, address_editT;
     ImageView logo_field;
     ImageButton imgbut1, imgbut2;
@@ -120,7 +126,10 @@ public class fragment1 extends Fragment implements AdapterView.OnItemClickListen
 
         return v;
     }
-
+    /**
+     * display the new selected logo and save it the the firebase
+     * <p>
+     */
     public void display_logo(String link){
         FirebaseStorage storage;
         StorageReference storageReference;
@@ -148,7 +157,10 @@ public class fragment1 extends Fragment implements AdapterView.OnItemClickListen
             refBusiness.removeEventListener(bListener);
         }
     }
-
+    /**
+     * open the gallery
+     * <p>
+     */
     public void upload_new_pic(){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -176,7 +188,11 @@ public class fragment1 extends Fragment implements AdapterView.OnItemClickListen
             });
         }
     }
-
+    /**
+     * save data
+     * @param requestCode (1 - save new name, 2 - save new address, 3 - save the new image link)
+     * <p>
+     */
     public void saveData(int requestCode){
         if (requestCode == 1){
             name = name_editT.getText().toString().trim();
@@ -199,27 +215,4 @@ public class fragment1 extends Fragment implements AdapterView.OnItemClickListen
 
     }
 
-//    public void add_to_firebase(Service service){
-//        sListener = new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot data : snapshot.getChildren()) {
-//                    String id = (String) data.getKey();
-//                    if (business_id.equals(id)) {
-//                        Business businessTemp = data.getValue(Business.class);
-//                        int pos = businessTemp.getBusiness_services().size();
-//                        refBusiness.child(business_id).child("business_services").child(String.valueOf(pos)).setValue(service);
-//                        refBusiness.removeEventListener(sListener);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        };
-//        refBusiness.addValueEventListener(sListener);
-//
-//    }
 }
