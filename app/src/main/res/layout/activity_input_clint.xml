@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#D9BAD4"
     tools:context=".MainActivity">
 
     <Space
@@ -60,7 +60,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="שם מלא:" />
+                android:text="שם מלא:"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -84,7 +85,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="אימייל:" />
+                android:text="אימייל:"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -108,7 +110,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="סיסמא:" />
+                android:text="סיסמא:"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -133,7 +136,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="אימות סיסמא:" />
+                android:text="אימות סיסמא:"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -158,7 +162,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="מספר טלפון:" />
+                android:text="מספר טלפון:"
+                android:textColor="#000000" />
 
         </LinearLayout>
 
@@ -167,10 +172,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:text="לחץ פה כדי להירשם"
             android:onClick="change_the_mode"
+            android:text="לחץ פה כדי להירשם"
             android:textColor="#000000"
-            app:backgroundTint="#FFFFFF"
+            app:backgroundTint="#E1C7DD"
             app:iconTint="#000000"
             tools:ignore="OnClick" />
 

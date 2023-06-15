@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9AAFD9"
     tools:context=".activity_new_queue">
 
     <Space
@@ -48,56 +49,70 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f1_click"
                     android:text="12"
-                    android:onClick="f1_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
 
                 <Button
                     android:id="@+id/buttonF2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f2_click"
                     android:text="12"
-                    android:onClick="f2_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
 
                 <Button
                     android:id="@+id/buttonF3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f3_click"
                     android:text="Button"
-                    android:onClick="f3_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
 
                 <Button
                     android:id="@+id/buttonF4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f4_click"
                     android:text="Button"
-                    android:onClick="f4_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
 
                 <Button
                     android:id="@+id/buttonF5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f5_click"
                     android:text="Button"
-                    android:onClick="f5_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
 
                 <Button
                     android:id="@+id/buttonF6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f6_click"
                     android:text="Button"
-                    android:onClick="f6_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
 
                 <Button
                     android:id="@+id/buttonF7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="f7_click"
                     android:text="Button"
-                    android:onClick="f7_click"/>
+                    android:textColor="#000000"
+                    app:backgroundTint="#D0D9F2" />
             </LinearLayout>
 
             <LinearLayout
@@ -113,6 +128,7 @@
                     android:layout_weight="0.5"
                     android:gravity="center"
                     android:text="בחרו שעה:"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <Spinner
@@ -128,6 +144,7 @@
                     android:layout_weight="0.5"
                     android:gravity="center"
                     android:text="בחרו שירות:"
+                    android:textColor="#000000"
                     android:textSize="24sp" />
 
                 <ListView

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_business_info" >
+    android:background="#D9BAD4"
+    tools:context=".activity_business_info">
 
     <Space
         android:layout_width="0dp"
@@ -71,8 +72,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
-            android:text="לקביעת תור לחצו פה"
-            android:onClick="make_new_q"/>
+            android:background="#FFFFFF"
+            android:onClick="make_new_q"
+            android:text="לקביעת תור לחצו פה" />
 
         <Space
             android:layout_width="match_parent"

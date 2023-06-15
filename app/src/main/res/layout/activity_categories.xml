@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:background="#D9BAD4"
+    tools:context=".MainActivity">
 
     <Space
         android:layout_width="0dp"
@@ -27,6 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="#FFFFFF"
                 android:onClick="back_to_menu_c"
                 tools:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
@@ -43,6 +45,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="עסקים בתחום ה"
+            android:textColor="#000000"
             android:textSize="24sp" />
 
         <LinearLayout

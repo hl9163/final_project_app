@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#9AAFD9"
         android:orientation="horizontal">
 
         <Space
@@ -22,7 +23,6 @@
             android:layout_height="match_parent"
             android:layout_weight="8"
             android:orientation="vertical">
-
 
 
             <LinearLayout
@@ -99,6 +99,7 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="שם:"
+                    android:textColor="#000000"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -132,9 +133,11 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="כתובת:"
+                    android:textColor="#000000"
                     android:textSize="14sp" />
 
             </LinearLayout>
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -142,9 +145,7 @@
                 android:layout_weight="1" />
 
 
-
         </LinearLayout>
-
 
 
         <Space

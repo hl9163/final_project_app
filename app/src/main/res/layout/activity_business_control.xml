@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9AAFD9"
     tools:context=".activity_business_control">
 
     <Space
@@ -52,6 +53,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="שלום!"
+            android:textColor="#000000"
             android:textSize="24sp" />
 
         <Space
@@ -65,7 +67,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:onClick="go_to_my_queues_b"
-            android:text="תורים קרובים" />
+            android:text="תורים קרובים"
+            android:textColor="#0E0E0E"
+            app:backgroundTint="#D0D9F2" />
 
         <Space
             android:layout_width="match_parent"
@@ -78,7 +82,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:onClick="move_to_business_settings"
-            android:text="עריכת פרטים" />
+            android:text="עריכת פרטים"
+            android:textColor="#000000"
+            app:backgroundTint="#D0D9F2" />
 
         <Space
             android:layout_width="match_parent"

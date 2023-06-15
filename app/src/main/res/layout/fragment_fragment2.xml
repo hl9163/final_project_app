@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#9AAFD9">
 
         <Space
             android:layout_width="0dp"
@@ -46,9 +48,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:maxLength="2"
                     android:hint="שעת סגירה"
-                    android:inputType="time" />
+                    android:inputType="time"
+                    android:maxLength="2" />
 
                 <EditText
                     android:id="@+id/openTimeEt"
@@ -56,9 +58,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:maxLength="2"
                     android:hint="שעת פתיחה"
-                    android:inputType="time" />
+                    android:inputType="time"
+                    android:maxLength="2" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,7 +80,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="הוספת תורים בתדירות:" />
+                    android:text="הוספת תורים בתדירות:"
+                    android:textColor="#000000" />
 
             </LinearLayout>
 
@@ -95,19 +98,25 @@
                         android:id="@+id/tueButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ג - סגור" />
+                        android:text="ג - סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
 
                     <Button
                         android:id="@+id/monButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ב -סגור" />
+                        android:text="ב -סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
 
                     <Button
                         android:id="@+id/sunButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="א - סגור" />
+                        android:text="א - סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
 
                 </TableRow>
 
@@ -119,19 +128,25 @@
                         android:id="@+id/friButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ו - סגור" />
+                        android:text="ו - סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
 
                     <Button
                         android:id="@+id/truButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ה - סגור" />
+                        android:text="ה - סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
 
                     <Button
                         android:id="@+id/wedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ד - סגור" />
+                        android:text="ד - סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
                 </TableRow>
 
                 <TableRow
@@ -142,7 +157,9 @@
                         android:id="@+id/satButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ש - סגור" />
+                        android:text="ש - סגור"
+                        android:textColor="#000000"
+                        app:backgroundTint="#D0D9F2" />
                 </TableRow>
 
             </TableLayout>
@@ -151,7 +168,8 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="לחץ כדי לשנות סטטוס" />
+                android:text="לחץ כדי לשנות סטטוס"
+                android:textColor="#000000" />
 
             <ListView
                 android:id="@+id/showTimes"

@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
+        android:background="#9AAFD9"
         android:orientation="vertical">
 
         <ListView
@@ -18,6 +19,7 @@
             android:layout_weight="3">
 
         </ListView>
+
         <TextView
             android:id="@+id/textViewAddress6"
             android:layout_width="match_parent"
@@ -25,7 +27,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="להוספת שירות למלא את הפרטים או כדי לעדכן, לחץ על השירות"
+            android:textColor="#000000"
             android:textSize="20sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -47,6 +51,7 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="שם:"
+                android:textColor="#000000"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -72,9 +77,11 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="מחיר:"
+                android:textColor="#000000"
                 android:textSize="14sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -96,9 +103,11 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:text="זמן:"
+                android:textColor="#000000"
                 android:textSize="14sp" />
 
         </LinearLayout>
+
         <Button
             android:id="@+id/add_services"
             android:layout_width="match_parent"
